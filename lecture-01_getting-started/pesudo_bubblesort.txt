@@ -1,0 +1,15 @@
+BubbleSort(arr):
+    n = length(arr)                        // Time: O(1), Space: O(1)
+    
+    for i from 0 to n-1:                    // Time: O(n), Space: O(1)
+        swapped = false                     // Time: O(1), Space: O(1)
+        
+        for j from 0 to n-i-2:              // Time: O(n), Space: O(1)
+            if arr[j] > arr[j + 1]:        // Time: O(1), Space: O(1)
+                swap(arr[j], arr[j + 1])   // Time: O(1), Space: O(1)
+                swapped = true
+
+        if not swapped:                     // Time: O(1), Space: O(1)
+            break                           // Time: O(1), Space: O(1)
+                                    //Total-----------------------------------
+                                            //Time: O(n^2) Space: O(1)

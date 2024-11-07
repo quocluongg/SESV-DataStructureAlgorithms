@@ -1,0 +1,43 @@
+MergeSort(arr, left, right):
+    if left >= right:
+        return                                  //Time: O(1), Space: O(0)
+
+    mid = (left + right) / 2                   //Time: O(1), Space: O(1)
+    MergeSort(arr, left, mid)                  //Time: T(n/2), Space: O(logn)
+    MergeSort(arr, mid + 1, right)             //Time: T(n/2), Space: O(logn)
+    Merge(arr, left, mid, right)               //Time: O(n), Space: O(n)
+
+                                         //Total==============================
+                                            //Time: 2*T(n/2) + O(n) = O(nlogn), Space: O(n)                
+                                        //Cách 1: định lý Master ta có: a=2 (2 lần gọi đệ quy)
+                                                                        b=2 (chia 2 sau mỗi lần gọi đệ quy)
+                                        => f(n) = O(n) với n^(log(b)a) => T(n) = O(nlogn);
+
+Merge(arr, left, mid, right):
+    leftArray = arr[left ... mid]               //Time: O(n/2), Space: O(n/2)
+    rightArray = arr[mid + 1 ... right]         //Time: O(n/2), Space: O(n/2)
+
+    i = 0                                       //Time: O(1), Space: O(1)
+    j = 0                                       //Time: O(1), Space: O(1)
+    k = left                                    //Time: O(1), Space: O(1)
+
+    while i < length(leftArray) and j < length(rightArray):  # Time: O(n), Space: O(1)
+        if leftArray[i] <= rightArray[j]:       //Time: O(1), Space: O(1)
+            arr[k] = leftArray[i]               //Time: O(1), Space: O(1)
+            i = i + 1                           //Time: O(1), Space: O(1)
+        else:
+            arr[k] = rightArray[j]              //Time: O(1), Space: O(1)
+            j = j + 1                           //Time: O(1), Space: O(1)
+        k = k + 1                               //Time: O(1), Space: O(1)
+
+    while i < length(leftArray):                //Time: O(n/2), Space: O(1)
+        arr[k] = leftArray[i]                   //Time: O(1), Space: O(1)
+        i = i + 1                               //Time: O(1), Space: O(1)
+        k = k + 1                               //Time: O(1), Space: O(1)
+
+    while j < length(rightArray):               //Time: O(n/2), Space: O(1)
+        arr[k] = rightArray[j]                  //Time: O(1), Space: O(1)
+        j = j + 1                               //Time: O(1), Space: O(1)
+        k = k + 1                               //Time: O(1), Space: O(1)
+                                        //Total================================
+                                                  Time: O(n), Space O(n)

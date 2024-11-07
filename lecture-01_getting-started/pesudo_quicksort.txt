@@ -1,0 +1,23 @@
+QuickSort(arr, low, high):
+    if low < high:                         // Time: O(1), Space: O(1)
+        pivot = Partition(arr, low, high)   // Time: O(n), Space: O(1)
+        QuickSort(arr, low, pivot - 1)      // Time: T(n/2), Space: O(log n)
+        QuickSort(arr, pivot + 1, high)     // Time: T(n/2), Space: O(log n)
+
+Partition(arr, low, high):
+    pivot = arr[high]                      // Time: O(1), Space: O(1)
+    i = low - 1                            // Time: O(1), Space: O(1)
+    
+    for j from low to high - 1:             // Time: O(n), Space: O(1)
+        if arr[j] < pivot:                 
+            i = i + 1
+            swap(arr[i], arr[j])            // Time: O(1), Space: O(1)
+    
+    swap(arr[i + 1], arr[high])            // Time: O(1), Space: O(1)
+    return i + 1
+                                    // Total--------------------------------------
+                                        //Time: 2*T(n/2) + O(n) = O(nlogn), Space: O(logn)
+                                        //Average case: O(nlogn), Worst case: O(n^2) tùy theo pivot              
+                                        //định lý Master ta có: a=2 (2 lần gọi đệ quy)
+                                                b=2 (chia 2 sau mỗi lần gọi đệ quy)
+                                        => f(n) = O(n) với n^(log(b)a) => T(n) = O(nlogn); 
