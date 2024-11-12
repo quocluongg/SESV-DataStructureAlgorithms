@@ -17,17 +17,17 @@ var letterCombinations = function (digits) {
     9: "wxyz",
   };
 
-  const dfs = (index, string) => {
-    if (string.length === digits.length) {
-      return result.push(string);
-    }
+  const dfs = (index, string) => {         //Time: 1, Space: 1
+    if (string.length === digits.length) { //Time: 1, Space: _
+      return result.push(string);          //Time: 1, Space: _
+    }         
 
-    for (const char of mapping[digits[index]]) {
-      dfs(index + 1, string + char);
+    for (const char of mapping[digits[index]]) { //Time 3 or 4, Space: 3 or 4
+      dfs(index + 1, string + char);             //Time: 4^n, Space: n             
     }
   };
 
-  dfs(0, "");
+  dfs(0, "");                                 //Time: 1, Space: _
   return result;
 };
 
