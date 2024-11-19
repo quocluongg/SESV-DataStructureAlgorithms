@@ -1,9 +1,13 @@
+const arr = [];
+for (let index = 0; index < 1000000; index++) {
+  arr.push(index);
+}
+
 console.time("array");
-const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-console.log(arr.includes(8));
+console.log(arr.includes(999999));
 console.timeEnd("array");
 
+const set = new Set(arr);
 console.time("set");
-const set = new Set([1, 2, 3, 4, 5, 6, 7, 8]);
-console.log(set.has(8));
+console.log(set.has(999999));
 console.timeEnd("set");
