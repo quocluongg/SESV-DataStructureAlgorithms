@@ -1,30 +1,42 @@
 class PriorityQueue {
   constructor() {
-    this.queue = [];
+    this.queue = []; //Space: O(1) , Time: O(1)
   }
   //build from array
+  //Space: O(1) , Time: O(n)
   enqueue(data) {
     if (this.queue.length === 0) {
-      return this.queue.push(data);
+      //Space: O(1) , Time: O(1)
+      return this.queue.push(data); //Space: O(1) , Time: O(1)
     } else {
+      //Space: O(1) , Time: O(n)
       for (let i = 0; i < this.queue.length; i++) {
+        //Space: O(1) , Time: O(1)
         if (data[1] < this.queue[i][1]) {
+          //Space: O(1) , Time: O(1)
           this.queue.splice(i, 0, data);
           return;
         }
       }
+      //Space: O(1) , Time: O(1)
       return this.queue.push(data);
     }
   }
+  //Space: O(1) , Time: O(n)
   dequeue() {
+    //Space: O(1) , Time: O(n)
     return this.queue.shift();
   }
+  //Space: O(1) , Time: O(1)
   peek() {
     console.log(this.queue[0]);
   }
+
+  //Space: O(1) , Time: O(1)
   size() {
     return this.queue.length;
   }
+  //Space: O(1) , Time: O(1)
   print() {
     console.log(this.queue);
   }
