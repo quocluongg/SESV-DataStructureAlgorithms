@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "binary-search-tree": "^0.2.6"
+  }
+}
