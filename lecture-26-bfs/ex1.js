@@ -18,25 +18,29 @@ const idxToAirport = {
     '4': { name: 'IAH' }
 }
 
-//Space: O(n) ~ use Set, Time: O(n) ~ visit all node 
+//Space: O(n) ~ use Set, Time: O(n+m) ~ O(n) 
 const breadFirstSearch = (root) => {
+    //Space: O(3n) ~ O(n), Time: O(1) 
     let result = []
     let visited = new Set()
     let queue = [root]
 
+    //Space: O(1), Time: O(n) - because queue will contain all node is n, we visit all node
     while(queue.length !== 0) {
 
         const currentNode = queue.shift() // dequeue
-
-        // if we've never seen this node before, process,
-        // otherwise, ignore the node
+        
+        //Space: O(1), Time: O(1)
         if(!visited.has(currentNode)) {
 
-            visited.add(currentNode) // add this node to seen list
-
+            //Space: O(1), Time: O(1)
+            visited.add(currentNode)
             const currentNodeNeighbors = graph5[currentNode] // get the neighbors
+
+            //Space: O(1), Time: O(m) ~ neighbor checks across (once from each node)
             currentNodeNeighbors.forEach(node => !visited.has(node) && queue.push(node)) // enqueue neighbors
     
+            //Space: O(1), Time: O(1)
             result.push(idxToAirport[currentNode].name) // save current node to result
 
             console.log('result: ', result)
